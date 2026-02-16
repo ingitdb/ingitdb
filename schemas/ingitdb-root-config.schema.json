@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ingitdb/ingitdb/schemas/ingitdb-root-config.schema.json",
+  "title": "inGitDB Root Config",
+  "description": "Schema for the .ingitdb.yaml root configuration file that defines the root-level collections of an inGitDB database.",
+  "type": "object",
+  "properties": {
+    "rootCollections": {
+      "type": "object",
+      "description": "A map of root collection IDs to their relative directory paths. If a path ends with '*', all subdirectories at that path are treated as separate collections.",
+      "additionalProperties": {
+        "type": "string",
+        "description": "Relative path to the collection directory. Use a trailing '*' to auto-discover sub-collections (e.g. 'data/*').",
+        "minLength": 1
+      },
+      "minProperties": 1
+    }
+  },
+  "additionalProperties": false
+}
