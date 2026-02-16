@@ -21,7 +21,7 @@ This repo is the central hub for **project planning**, **issue tracking**, **arc
 | [🔌 OpenAPI Spec](./docs/open-api/)                                    | REST API contract (OpenAPI 3.0, 24 endpoints) |
 | [🧩 TypeScript Client Architecture](./docs/ingitdb-ts-architecture.md) | Client design, fluent API, query builder      |
 | [⚙️ GitHub Actions Integration](./docs/github-actions-integration.md)  | CI/CD workflows and custom validation actions |
-| [📐 Schemas](./schemas/)                                               | JSON Schema definitions for inGitDB files     |
+| [📐 Schemas](https://github.com/ingitdb/ingitdb-schema)                | JSON Schema definitions for inGitDB files     |
 
 ---
 
@@ -125,9 +125,6 @@ ingitdb/
 │   ├── ingitdb-ts-architecture.md         ←   TypeScript client architecture
 │   ├── github-actions-integration.md      ←   CI/CD workflows & actions
 │   └── summary.md                         ←   Deliverable status & next steps
-├── schemas/                               ← JSON Schema definitions
-│   ├── ingitdb-collection.schema.json    ←   Collection definition schema
-│   └── ingitdb-root-config.schema.json   ←   Root config schema
 └── ai/
     └── prompts/                           ← 10 AI development task prompts
 ```
@@ -136,14 +133,14 @@ ingitdb/
 
 ## Schemas
 
-JSON Schema definitions for inGitDB configuration and collection files are available in the [`schemas/`](./schemas/) directory:
+JSON Schema definitions for inGitDB configuration and collection files are available in the [`ingitdb-schema`](https://github.com/ingitdb/ingitdb-schema) repository:
 
-| Schema File                                                                    | Validates                        | Description                                                                        |
-| ------------------------------------------------------------------------------ | -------------------------------- | ---------------------------------------------------------------------------------- |
-| [`ingitdb-collection.schema.json`](./schemas/ingitdb-collection.schema.json)   | `.ingitdb-collection.yaml` files | Collection structure — columns, record file format, ordering, and localized titles |
-| [`ingitdb-root-config.schema.json`](./schemas/ingitdb-root-config.schema.json) | `.ingitdb.yaml` files            | Root configuration mapping collection IDs to directory paths                       |
+| Schema File                                                                                                              | Validates                        | Description                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------ | -------------------------------- | ---------------------------------------------------------------------------------- |
+| [`ingitdb-collection.schema.json`](https://github.com/ingitdb/ingitdb-schema/blob/main/ingitdb-collection.schema.json)   | `.ingitdb-collection.yaml` files | Collection structure — columns, record file format, ordering, and localized titles |
+| [`ingitdb-root-config.schema.json`](https://github.com/ingitdb/ingitdb-schema/blob/main/ingitdb-root-config.schema.json) | `.ingitdb.yaml` files            | Root configuration mapping collection IDs to directory paths                       |
 
-These schemas are derived from the Go struct definitions in [`ingitdb-go`](https://github.com/ingitdb/ingitdb-go). See the [schemas README](./schemas/README.md) for full property documentation.
+These schemas are derived from the Go struct definitions in [`ingitdb-go`](https://github.com/ingitdb/ingitdb-go). See the [`ingitdb-schema` README](https://github.com/ingitdb/ingitdb-schema) for full property documentation.
 
 ---
 
