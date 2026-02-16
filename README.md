@@ -62,13 +62,15 @@ inGitDB is a **Git-backed versioned database** designed for teams who want to ma
 
 ### Key Concepts
 
-| Concept      | Description                                                                    |
-| ------------ | ------------------------------------------------------------------------------ |
-| **Database** | A named collection of tables stored as a Git repository or subdirectory        |
-| **Table**    | A collection of records validated against a JSON Schema                        |
-| **Record**   | An individual data entry with auto-generated `_id`, `_version`, and timestamps |
-| **Branch**   | A Git branch for isolating data changes                                        |
-| **Commit**   | A Git commit representing a point-in-time snapshot of database state           |
+| Concept        | Description                                                                    |
+| -------------- | ------------------------------------------------------------------------------ |
+| **Database**   | A named set of collections stored as a Git repository or subdirectory          |
+| **Collection** | A set of items validated against a JSON Schema                                 |
+| **Item**       | An individual data entry with auto-generated `_id`, `_version`, and timestamps |
+| **Branch**     | A Git branch for isolating data changes                                        |
+| **Commit**     | A Git commit representing a point-in-time snapshot of database state           |
+
+> 💡 **Collections vs Tables:** Unlike traditional database tables where records are flat rows, a collection **item** can itself contain **sub-collections** — enabling naturally hierarchical data structures without joins or foreign keys.
 
 ---
 
