@@ -83,7 +83,7 @@ inGitDB is a **Git-backed versioned database** designed for teams who want to ma
 | --------------------------------------------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | **[`ingitdb`](https://github.com/ingitdb/ingitdb)** (this repo) | Main hub — planning, issues, AI prompts, documentation                        | Active                                                                                                                            |
 | [`ingitdb-go`](https://github.com/ingitdb/ingitdb-go)           | Go CLI & library — core validation, data management, server (`serve` command) | [![Build](https://github.com/ingitdb/ingitdb-go/actions/workflows/golangci.yml/badge.svg)](https://github.com/ingitdb/ingitdb-go) |
-| [`ingitdb-ts`](https://github.com/ingitdb/ingitdb-ts)           | TypeScript/Angular monorepo — client library and web app                      | Active                                                                                                                            |
+| [`ingitdb-ts`](https://github.com/ingitdb/ingitdb-ts)           | TypeScript client library for inGitDB                                         | Active                                                                                                                            |
 | [`ingitdb-schema`](https://github.com/ingitdb/ingitdb-schema)   | JSON Schema definitions for inGitDB databases                                 | Active                                                                                                                            |
 
 ### GitHub Actions & CI/CD
@@ -92,12 +92,6 @@ inGitDB is a **Git-backed versioned database** designed for teams who want to ma
 | --------------------------------------------------------------------------- | -------------------------------------------------------------- |
 | [`ingitdb-action`](https://github.com/ingitdb/ingitdb-action)               | Lightweight GitHub Action for running inGitDB validation       |
 | [`ingitdb-github-action`](https://github.com/ingitdb/ingitdb-github-action) | Full-featured GitHub Action (TypeScript) for CI/CD integration |
-
-### Client Libraries
-
-| Repository                                                          | Description                              |
-| ------------------------------------------------------------------- | ---------------------------------------- |
-| [`ingitdb-client-ts`](https://github.com/ingitdb/ingitdb-client-ts) | Standalone TypeScript client for inGitDB |
 
 ### Demo & Test Databases
 
@@ -215,7 +209,7 @@ For code contributions to implementations:
 | Component                   | Repository                                                                          |
 | --------------------------- | ----------------------------------------------------------------------------------- |
 | Go CLI & Server             | [`ingitdb/ingitdb-go`](https://github.com/ingitdb/ingitdb-go)                       |
-| TypeScript Client & Web App | [`ingitdb/ingitdb-ts`](https://github.com/ingitdb/ingitdb-ts)                       |
+| TypeScript Client           | [`ingitdb/ingitdb-ts`](https://github.com/ingitdb/ingitdb-ts)                       |
 | GitHub Actions              | [`ingitdb/ingitdb-github-action`](https://github.com/ingitdb/ingitdb-github-action) |
 | Schema Definitions          | [`ingitdb/ingitdb-schema`](https://github.com/ingitdb/ingitdb-schema)               |
 
