@@ -54,6 +54,16 @@ The choice of record file type has direct consequences for Git history granulari
 
 Per-record commit history is only available with the `map[string]any` type. The list and dictionary types have collection-level history only — every change touches the single file containing all records.
 
+### INGR record-type restriction
+
+The INGR format (`format: ingr`) is inherently a list of records sharing a header. It MUST NOT be used with `record_file.type: map[string]any` (one file per record) because wrapping a single record in INGR's multi-record framing has no semantic value.
+
+#### REQ: ingr-multi-record-only
+
+When `record_file.format` is `ingr`, `record_file.type` MUST be either `[]map[string]any` (list) or `map[$record_id]map[$field_name]any` (dictionary). The `map[string]any` (single record per file) type MUST be rejected by schema validation.
+
+When `type` is `map[$record_id]map[$field_name]any`, the implementation re-indexes INGR's reserved `$ID` column to produce the per-key map on read and injects `$ID` from the key on write.
+
 ### Excluding non-record files
 
 A directory that holds `map[string]any` records may legitimately contain auxiliary files alongside records — a `README.md` documenting the collection, a `.gitkeep`, an `index.md` rendered by a static site generator. With the file extension alone as the record signal, these files would be misclassified as records and break reads, counts, and validation.
