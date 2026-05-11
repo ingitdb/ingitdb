@@ -54,6 +54,34 @@ The choice of record file type has direct consequences for Git history granulari
 
 Per-record commit history is only available with the `map[string]any` type. The list and dictionary types have collection-level history only — every change touches the single file containing all records.
 
+### Excluding non-record files
+
+A directory that holds `map[string]any` records may legitimately contain auxiliary files alongside records — a `README.md` documenting the collection, a `.gitkeep`, an `index.md` rendered by a static site generator. With the file extension alone as the record signal, these files would be misclassified as records and break reads, counts, and validation.
+
+`record_file.exclude_regex` is an optional regular expression applied to the basename of each candidate record file. Files whose basename matches MUST be omitted from reads, validation, and record counts.
+
+#### REQ: exclude-regex-optional
+
+A collection schema MAY declare `record_file.exclude_regex` as a regular expression string. The pattern MUST compile under Go's `regexp` package (RE2 syntax); a schema with an uncompilable pattern MUST be rejected by validation.
+
+#### REQ: exclude-regex-basename-scope
+
+When `exclude_regex` is set, implementations MUST apply the pattern to each candidate file's basename (the last path segment), not to its full path. The match is partial by default (Go `regexp.MatchString` semantics); authors anchor with `^` and `$` when they want full-name matching.
+
+#### REQ: exclude-regex-uniform-application
+
+A file whose basename matches `exclude_regex` MUST be excluded uniformly from:
+
+1. record reads (the file is invisible to per-key `Get` and to query enumeration);
+2. record validation (validators MUST NOT report errors against excluded files);
+3. record counts (excluded files MUST NOT contribute to per-collection record counts).
+
+Inconsistent exclusion across these paths is a defect.
+
+#### REQ: exclude-regex-empty-default
+
+When `exclude_regex` is empty or omitted, no files are excluded by this rule. Hidden files (names starting with `.`) and reserved names (`$records`, `$ingitdb`, etc.) remain excluded by their own existing rules.
+
 ## Dependencies
 
 - collection-schema
@@ -72,6 +100,12 @@ A collection's directory layout matches its declared `record_file.type`. A colle
 **Requirements:** record-file-types#req:map-string-any-crud, record-file-types#req:history-granularity
 
 Per-record CRUD operations succeed for `map[string]any` collections. Attempting per-record CRUD against `[]map[string]any` or `map[string]map[string]any` is either rejected or implemented at collection-file granularity.
+
+### AC: exclude-regex-omits-auxiliary-files
+
+**Requirements:** record-file-types#req:exclude-regex-optional, record-file-types#req:exclude-regex-basename-scope, record-file-types#req:exclude-regex-uniform-application
+
+A `map[string]any` collection that places a `README.md` in its records directory and declares `record_file.exclude_regex: '^README\.md$'` does not return that file as a record from queries, does not count it toward `total_records`, and does not flag it as a validation error — while still returning and counting all `{key}.md` records that don't match.
 
 ## Outstanding Questions
 

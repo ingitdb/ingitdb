@@ -70,4 +70,4 @@ Columns may declare a `foreign_key` referencing another collection. Validation r
 - Should referential-integrity validation be configurable (warn vs. error) per column, or is it always strict?
 
 ---
-*This document follows the https://specscore.md/feature-specification*
+*This document follows the https://specscore.md/features-index-specification*
