@@ -36,6 +36,22 @@ A collection schema MUST declare at least one column. The column set is the cont
 
 Each column MUST declare a `type`. Recognized types include scalars (e.g. `string`, `int`, `bool`) and structured types as defined by `ingitdb-schema`.
 
+#### REQ: required-field
+
+A column MAY declare `required: true`. A record is considered invalid for that column when the column has no value present in the on-disk file, or its value is the empty string.
+
+### Required-field enforcement
+
+`required: true` is enforced asymmetrically across reads and writes. The asymmetry exists because read paths must remain useful in the presence of bad data (a user reviewing or repairing a corrupted record), while write paths are the right place to refuse new invalid data.
+
+#### REQ: required-on-write
+
+A record write (create or update) MUST fail when any required column has no value or an empty value. The error MUST name the offending column. No partial record is committed to disk on failure.
+
+#### REQ: required-on-read
+
+A record read MUST succeed when a required column has no value. The returned record MUST carry a per-record error describing the missing required column(s); in the DALgo binding this maps to `record.SetError(err)`. Other valid fields on the same record MUST remain accessible to the caller.
+
 ### Record file declaration
 
 The schema declares how records are laid out on disk via a `record_file.type` field.
@@ -66,6 +82,12 @@ A `.collection/definition.yaml` that exists at the right path, validates against
 **Requirements:** collection-schema#req:column-type, collection-schema#req:record-file-type-declared
 
 A schema missing required fields (no columns, missing `record_file.type`, or columns without `type`) is rejected by validation, with the offending field reported.
+
+### AC: required-field-write-fails-read-succeeds
+
+**Requirements:** collection-schema#req:required-field, collection-schema#req:required-on-write, collection-schema#req:required-on-read
+
+Attempting to write a record missing a required column's value fails with an error naming the column; no file is written. Reading an existing record file that is missing a required column's value succeeds, returns the record's other fields, and surfaces the validation error to the caller (in DALgo, via `record.SetError`).
 
 ## Outstanding Questions
 

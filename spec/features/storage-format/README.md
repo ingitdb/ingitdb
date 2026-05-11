@@ -40,6 +40,10 @@ Record files SHOULD be formatted such that a small logical change (e.g. updating
 
 When inGitDB tooling writes a record file, the serialization MUST be deterministic across runs given the same input. Reordering keys between writes is a defect.
 
+#### REQ: no-rewrite-without-change
+
+When a write operation's resulting record values are identical to what was last read from disk, the writer MUST NOT modify the file. This prevents spurious whitespace, key-order, or formatting diffs from round-tripping a hand-authored file through inGitDB tooling. The rule applies to every record file format (YAML, JSON, Markdown, future additions): a no-op round-trip MUST leave the working tree clean under `git status`.
+
 ### No proprietary index
 
 Reading a record does not require a database server, daemon, or rebuilt index. The on-disk file is the source of truth.
@@ -66,6 +70,12 @@ A repository whose record files are valid UTF-8 YAML or JSON, readable in any te
 **Requirements:** storage-format#req:line-oriented-diffs, storage-format#req:deterministic-serialization
 
 Writing the same logical record twice produces byte-identical files. A small field change produces a small diff under standard `git diff` settings.
+
+### AC: no-op-round-trip-clean
+
+**Requirements:** storage-format#req:no-rewrite-without-change
+
+Reading any record file and writing it back without modifying any field value produces no change on disk. A `git status` after the round-trip shows the working tree clean, regardless of whether the source file used canonical key ordering or formatting.
 
 ## Outstanding Questions
 
