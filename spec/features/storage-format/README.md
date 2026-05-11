@@ -4,7 +4,7 @@
 
 ## Summary
 
-inGitDB stores every record as a plain text file on disk encoded as YAML, JSON, TOML, or Markdown-with-frontmatter. The format is human-readable, Git-diffable, and contains no proprietary binary structures, indexes, or daemon-managed state. A clone of the repository is a complete copy of the database.
+inGitDB stores every record as a plain text file on disk encoded as YAML, JSON, TOML, Markdown-with-frontmatter, or INGR (in-Git Records). The format is human-readable, Git-diffable, and contains no proprietary binary structures, indexes, or daemon-managed state. A clone of the repository is a complete copy of the database.
 
 ## Problem
 
@@ -22,7 +22,7 @@ Record files MUST be encoded as UTF-8 text. Binary record content is not support
 
 #### REQ: supported-formats
 
-A collection MUST declare its record format as one of: `yaml` (or its alias `yml`), `json`, `toml`, or `markdown`. Mixing formats within a single collection is not permitted. Binary serializations (CBOR, MessagePack, BSON, JSONB, Protobuf, Avro, etc.) are out of scope because they violate `text-only` and `editor-readable`.
+A collection MUST declare its record format as one of: `yaml` (or its alias `yml`), `json`, `toml`, `markdown`, or `ingr`. Mixing formats within a single collection is not permitted. Binary serializations (CBOR, MessagePack, BSON, JSONB, Protobuf, Avro, etc.) are out of scope because they violate `text-only` and `editor-readable`.
 
 #### REQ: editor-readable
 
@@ -42,7 +42,7 @@ When inGitDB tooling writes a record file, the serialization MUST be determinist
 
 #### REQ: no-rewrite-without-change
 
-When a write operation's resulting record values are identical to what was last read from disk, the writer MUST NOT modify the file. This prevents spurious whitespace, key-order, or formatting diffs from round-tripping a hand-authored file through inGitDB tooling. The rule applies to every record file format (YAML, JSON, TOML, Markdown, future additions): a no-op round-trip MUST leave the working tree clean under `git status`.
+When a write operation's resulting record values are identical to what was last read from disk, the writer MUST NOT modify the file. This prevents spurious whitespace, key-order, or formatting diffs from round-tripping a hand-authored file through inGitDB tooling. The rule applies to every record file format (YAML, JSON, TOML, Markdown, INGR, future additions): a no-op round-trip MUST leave the working tree clean under `git status`.
 
 ### No proprietary index
 
@@ -63,7 +63,7 @@ A consumer with a local clone MUST be able to read any record by reading the fil
 
 **Requirements:** storage-format#req:text-only, storage-format#req:supported-formats, storage-format#req:editor-readable
 
-A repository whose record files are valid UTF-8 in one of the supported text formats (YAML, JSON, TOML, Markdown), readable in any text editor, satisfies the storage format. A repository containing a binary record file or a record encoded in a format outside the supported set is rejected.
+A repository whose record files are valid UTF-8 in one of the supported text formats (YAML, JSON, TOML, Markdown, INGR), readable in any text editor, satisfies the storage format. A repository containing a binary record file or a record encoded in a format outside the supported set is rejected.
 
 ### AC: deterministic-writes
 
