@@ -36,3 +36,7 @@ A green lint run is a precondition for any change to this directory.
 
 - [Ideation history](../docs/ideas/) — design conversations that produced specs.
 - [JSON Schemas](https://github.com/ingitdb/ingitdb-schema) — machine-readable schemas derived from this spec.
+
+## Open Questions
+
+None at this time.

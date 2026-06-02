@@ -1,0 +1,7 @@
+# SpecScore Repo Config Schema: https://specscore.md/repo-config
+
+project:
+    title: inGitDB Specification
+    host: github.com
+    org: ingitdb
+    repo: ingitdb

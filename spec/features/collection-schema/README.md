@@ -1,5 +1,6 @@
 # Feature: Collection Schema
 
+> [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/collection-schema?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/collection-schema?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/collection-schema?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/collection-schema?op=request-change) |
 **Status:** Draft
 
 ## Summary
@@ -89,7 +90,7 @@ A schema missing required fields (no columns, missing `record_file.type`, or col
 
 Attempting to write a record missing a required column's value fails with an error naming the column; no file is written. Reading an existing record file that is missing a required column's value succeeds, returns the record's other fields, and surfaces the validation error to the caller (in DALgo, via `record.SetError`).
 
-## Outstanding Questions
+## Open Questions
 
 - Which scalar and structured column types are part of the stable contract versus extensible by future schema versions?
 - How are schema versions handled when the published JSON Schema evolves — does the file declare its target schema version?

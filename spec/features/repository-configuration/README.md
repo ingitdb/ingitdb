@@ -1,5 +1,6 @@
 # Feature: Repository Configuration
 
+> [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/repository-configuration?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/repository-configuration?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/repository-configuration?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/repository-configuration?op=request-change) |
 **Status:** Draft
 
 ## Summary
@@ -72,7 +73,7 @@ A repository with no `.ingitdb/` directory, or one whose `.ingitdb/` directory i
 
 A repository with a `.ingitdb/root-collections.yaml` and `.ingitdb/settings.yaml` at the root is correctly detected from any sub-directory. Unknown files in `.ingitdb/` do not cause errors.
 
-## Outstanding Questions
+## Open Questions
 
 - Should there be a per-user `.ingitdb/.local.yaml` ignored by Git for developer-specific overrides, or is configuration purely repo-level?
 

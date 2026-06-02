@@ -1,5 +1,6 @@
 # Feature: Storage Format
 
+> [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/storage-format?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/storage-format?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/storage-format?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/storage-format?op=request-change) |
 **Status:** Draft
 
 ## Summary
@@ -77,7 +78,7 @@ Writing the same logical record twice produces byte-identical files. A small fie
 
 Reading any record file and writing it back without modifying any field value produces no change on disk. A `git status` after the round-trip shows the working tree clean, regardless of whether the source file used canonical key ordering or formatting.
 
-## Outstanding Questions
+## Open Questions
 
 - ~~Should a third encoding (e.g. TOML) be reserved for future use, or is the YAML/JSON choice intentionally final?~~ — **resolved.** TOML is supported alongside YAML and JSON. Markdown is also supported as a structured format with YAML frontmatter; see `markdown-records`.
 - What is the policy for embedded large blobs — link out to a separate file or accept inline base64?
