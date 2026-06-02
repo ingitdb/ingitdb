@@ -61,18 +61,12 @@ expression, evaluated under Starlark's specified semantics. Starlark's specifica
 defines the *intent* of every formula; where Starlark leaves a corner under-specified,
 the published conformance vectors (REQ:conformance-vectors) are the tie-breaker.
 
-#### REQ: reference-wasm-engine
-
-Correctness is defined by the conformance vectors (REQ:conformance-vectors), not by any
-particular binary. To make cross-platform conformance easy, the standard PROVIDES a
-**reference Starlark engine compiled to WebAssembly** that produces those vectors; an
-implementation MAY embed this shared WASM engine to obtain conformance directly, or use
-any other Starlark engine that passes every vector. The reference WASM engine is the
-*recommended* path for new implementations (e.g. a TypeScript client) because it avoids
-reimplementing the language; the Go reference implementation instead embeds a native
-Starlark library and conforms by passing the same vectors. The reference engine is a
-convenience and a tie-breaker for under-specified corners, never an authority above the
-vectors.
+A reference Starlark engine compiled to WebAssembly — a convenience that lets new
+implementations (e.g. a TypeScript client) obtain conformance without reimplementing the
+language — is specified separately in the
+[`formula-reference-wasm-engine`](../formula-reference-wasm-engine/README.md) Feature and is
+subordinate to the conformance vectors. An implementation conforms by passing the vectors
+with any Starlark engine; the Go reference implementation embeds a native Starlark library.
 
 #### REQ: deterministic-sandbox
 
@@ -129,13 +123,14 @@ Conformance is defined **solely** by the vectors. The standard publishes **confo
 vectors** — tuples of (declared column type, formula, input stored fields, expected
 output *or* expected error). An implementation conforms to computed columns **if and
 only if** it produces the expected result for every published vector. The vectors —
-not the language reference and not any particular embedding library or WASM artifact —
-are the single normative authority; the Starlark specification states intent and the
-reference WASM engine is a convenience, both subordinate to the vectors.
+not the language reference and not any particular embedding library or engine artifact —
+are the single normative authority; the Starlark specification states intent, and any
+reference engine (see the `formula-reference-wasm-engine` Feature) is a convenience, both
+subordinate to the vectors.
 
 ## Acceptance Criteria
 
-### AC: full-name-computed (verifies REQ:computed-column-formula, REQ:compute-on-read)
+### AC: full-name-computed (verifies REQ:computed-column-formula, REQ:compute-on-read, REQ:formula-language-starlark)
 
 **Given** a schema with a `string` column `full_name` whose formula is `first_name + " " + last_name`, and a record with `first_name: "Ada"`, `last_name: "Lovelace"`
 **When** a conforming implementation reads the record
@@ -158,12 +153,6 @@ reference WASM engine is a convenience, both subordinate to the vectors.
 **Given** a computed column declared with a type other than `string`, `int`, `float`, or `bool`
 **When** the schema is validated
 **Then** validation fails naming the collection and the column
-
-### AC: implementations-agree (verifies REQ:formula-language-starlark, REQ:reference-wasm-engine, REQ:deterministic-sandbox)
-
-**Given** the same schema, record, and formula
-**When** two conforming implementations each read the record
-**Then** both produce byte-identical output for the computed column
 
 ### AC: no-io-access (verifies REQ:deterministic-sandbox)
 
@@ -216,7 +205,6 @@ CI (e.g. the Go CLI and a TypeScript client), not by Rehearse scenarios in this 
 
 ## Open Questions
 
-- Which Starlark-to-WASM build is normative — `starlark-go` compiled to wasm, or `starlark-rust` — weighed on wasm size, evaluation performance, and browser startup cost?
 - What is the exact curated set of deterministic builtin helpers a formula may call (string methods, `len`/`min`/`max`, numeric helpers), and which Starlark universe members are excluded to preserve determinism?
 - In what format and location are the conformance vectors published and versioned so every implementation's CI consumes the same set?
 - Should computed columns be allowed to declare a `foreign_key` (validated against the derived value), extending `referential-integrity`? Deferred from this MVP.

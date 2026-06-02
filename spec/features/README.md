@@ -19,6 +19,7 @@ This index lists every top-level feature that defines the inGitDB database forma
 | [referential-integrity](referential-integrity/README.md) | Draft | Foreign-key style references between collections; broken references are surfaced as validation errors. |
 | [markdown-records](markdown-records/README.md) | Draft | TODO: Add description. |
 | [computed-columns](computed-columns/README.md) | Approved | TODO: Add description. |
+| [formula-reference-wasm-engine](formula-reference-wasm-engine/README.md) | Draft | Deferred reference Starlark→WASM engine that makes byte-identical cross-implementation formula evaluation structural; conformance stays defined by the computed-columns vectors. |
 
 ## Feature Summaries
 

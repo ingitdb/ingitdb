@@ -3,7 +3,7 @@
 **Status:** Implementing
 **Date:** 2026-06-02
 **Owner:** alexander.trakhimenok@gmail.com
-**Promotes To:** computed-columns
+**Promotes To:** computed-columns, formula-reference-wasm-engine
 **Supersedes:** —
 **Related Ideas:** —
 
