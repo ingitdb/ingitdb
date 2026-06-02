@@ -1,6 +1,6 @@
 # Idea: Computed Columns & Scripted Materialized Views (language-agnostic)
 
-**Status:** Draft
+**Status:** Approved
 **Date:** 2026-06-02
 **Owner:** alexander.trakhimenok@gmail.com
 **Promotes To:** —
