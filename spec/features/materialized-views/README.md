@@ -1,5 +1,6 @@
 # Feature: Materialized Views
 
+> [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/materialized-views?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/materialized-views?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/materialized-views?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/materialized-views?op=request-change) |
 **Status:** Draft
 
 ## Summary
@@ -88,7 +89,7 @@ After a validation pass, every materialized view file lives under `<repo-root>/$
 
 Running validation twice in a row over unchanged source data produces no Git diff in the `$ingitdb/` tree on the second run. Deleting the `$ingitdb/` tree and re-running validation regenerates it identically.
 
-## Outstanding Questions
+## Open Questions
 
 - Are stale view files (corresponding to records that have been deleted) cleaned up automatically, or only on a full rebuild?
 - Should views be excluded from `git diff` summaries by default to reduce review noise on large data changes?

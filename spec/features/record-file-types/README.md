@@ -1,5 +1,6 @@
 # Feature: Record File Types
 
+> [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/record-file-types?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/record-file-types?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/record-file-types?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/record-file-types?op=request-change) |
 **Status:** Draft
 
 ## Summary
@@ -117,7 +118,7 @@ Per-record CRUD operations succeed for `map[string]any` collections. Attempting 
 
 A `map[string]any` collection that places a `README.md` in its records directory and declares `record_file.exclude_regex: '^README\.md$'` does not return that file as a record from queries, does not count it toward `total_records`, and does not flag it as a validation error — while still returning and counting all `{key}.md` records that don't match.
 
-## Outstanding Questions
+## Open Questions
 
 - For `map[string]any`, what is the canonical extension policy when both YAML and JSON files appear in the same collection directory?
 - Should `map[string]map[string]any` allow ordering metadata, or is the dictionary type explicitly unordered?

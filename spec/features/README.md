@@ -17,6 +17,9 @@ This index lists every top-level feature that defines the inGitDB database forma
 | [localization](localization/README.md) | Draft | Multi-language support via the `languages` setting, declaring required and optional language codes. |
 | [materialized-views](materialized-views/README.md) | Draft | Pre-computed view files generated under `$ingitdb/`, treated as derived artifacts and rebuilt during validation. |
 | [referential-integrity](referential-integrity/README.md) | Draft | Foreign-key style references between collections; broken references are surfaced as validation errors. |
+| [markdown-records](markdown-records/README.md) | Draft | TODO: Add description. |
+| [computed-columns](computed-columns/README.md) | Approved | TODO: Add description. |
+| [formula-reference-wasm-engine](formula-reference-wasm-engine/README.md) | Draft | Deferred reference Starlark→WASM engine that makes byte-identical cross-implementation formula evaluation structural; conformance stays defined by the computed-columns vectors. |
 
 ## Feature Summaries
 
@@ -64,7 +67,7 @@ Materialized views are pre-computed output files generated under the `$ingitdb/`
 
 Columns may declare a `foreign_key` referencing another collection. Validation reports broken references — values that do not match any record ID in the referenced collection. The same metadata enables the materializer to generate FK-filtered views without a query engine.
 
-## Outstanding Questions
+## Open Questions
 
 - How should sub-collections be discovered by the validator when they are nested inside record files of a `map[string]any` collection?
 - Should referential-integrity validation be configurable (warn vs. error) per column, or is it always strict?

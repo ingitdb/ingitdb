@@ -1,5 +1,6 @@
 # Feature: Referential Integrity
 
+> [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/referential-integrity?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/referential-integrity?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/referential-integrity?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/referential-integrity?op=request-change) |
 **Status:** Draft
 
 ## Summary
@@ -61,7 +62,7 @@ A collection that declares both a default view and at least one `foreign_key` co
 
 Not defined yet.
 
-## Outstanding Questions
+## Open Questions
 
 - Acceptance criteria not yet defined for this feature.
 - Should referential-integrity violations be configurable per-column as warning or error, or is the policy always strict?

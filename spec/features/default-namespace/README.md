@@ -1,5 +1,6 @@
 # Feature: Default Namespace
 
+> [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/default-namespace?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/default-namespace?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/default-namespace?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/default-namespace?op=request-change) |
 **Status:** Draft
 
 ## Summary
@@ -75,7 +76,7 @@ A database whose `settings.yaml` sets `default_namespace: todo` and whose `root-
 
 The same database, when imported by another database as `productivity.*`, exposes its `tasks` collection as `productivity.tasks`. The imported database's `default_namespace` does not appear in the resulting collection IDs.
 
-## Outstanding Questions
+## Open Questions
 
 - Can `default_namespace` itself contain a dot to declare a multi-segment namespace (e.g. `org.todo`), or is it constrained to a single segment?
 
