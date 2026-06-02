@@ -69,6 +69,25 @@ vectors:
 | `runtime-error` | the formula raised during evaluation (e.g. division by zero) |
 | `undefined-name` | the formula referenced a name absent from the sandbox (e.g. an I/O builtin like `open`) |
 
+## Validation vectors
+
+[`validation_vectors.yaml`](./validation_vectors.yaml) pins **schema/declaration
+validation** (as distinct from evaluation). A conforming implementation MUST reject each
+vector with an error naming the collection and the offending `target` column. Each vector
+has a `kind`:
+
+- `schema` — the column declaration is invalid; rejected when the schema is validated.
+- `stored-value` — a record supplies a value for a computed column; rejected on write.
+
+### Validation error kinds
+
+| Kind | Meaning |
+|---|---|
+| `invalid-formula` | the formula is not a single valid Starlark expression |
+| `references-computed-column` | the formula references another computed column, not a stored field |
+| `unsupported-type` | the computed column declares a type outside `string`/`int`/`float`/`bool` |
+| `stored-computed-value` | a write supplied a value for a computed column |
+
 ## Open Questions
 
 - Versioning/distribution: this MVP versions vectors in-tree alongside the standard
