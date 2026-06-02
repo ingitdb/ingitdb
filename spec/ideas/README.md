@@ -6,7 +6,7 @@ Pre-spec one-pagers. Each Idea is a lint-clean problem-direction-MVP one-pager t
 
 | Idea | Status | Date | Owner | Promotes To |
 |------|--------|------|-------|-------------|
-| [computed-columns-and-scripted-views](computed-columns-and-scripted-views.md) | Approved | 2026-06-02 | alexander.trakhimenok@gmail.com | — |
+| [computed-columns-and-scripted-views](computed-columns-and-scripted-views.md) | Implementing | 2026-06-02 | alexander.trakhimenok@gmail.com | computed-columns |
 
 ## Open Questions
 

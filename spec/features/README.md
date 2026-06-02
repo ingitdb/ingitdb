@@ -18,6 +18,7 @@ This index lists every top-level feature that defines the inGitDB database forma
 | [materialized-views](materialized-views/README.md) | Draft | Pre-computed view files generated under `$ingitdb/`, treated as derived artifacts and rebuilt during validation. |
 | [referential-integrity](referential-integrity/README.md) | Draft | Foreign-key style references between collections; broken references are surfaced as validation errors. |
 | [markdown-records](markdown-records/README.md) | Draft | TODO: Add description. |
+| [computed-columns](computed-columns/README.md) | Approved | TODO: Add description. |
 
 ## Feature Summaries
 

@@ -1,9 +1,9 @@
 # Idea: Computed Columns & Scripted Materialized Views (language-agnostic)
 
-**Status:** Approved
+**Status:** Implementing
 **Date:** 2026-06-02
 **Owner:** alexander.trakhimenok@gmail.com
-**Promotes To:** —
+**Promotes To:** computed-columns
 **Supersedes:** —
 **Related Ideas:** —
 
