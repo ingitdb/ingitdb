@@ -1,5 +1,6 @@
 # Feature: Collection
 
+> [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/collection?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/collection?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/collection?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/collection?op=request-change) |
 **Status:** Draft
 
 ## Summary
@@ -75,7 +76,7 @@ A collection ID containing only alphanumerics and dots, starting and ending with
 
 A directory with a `.collection/definition.yaml` and records that conform to that schema is a valid collection. A directory missing the schema file, or containing records that violate the schema, fails validation.
 
-## Outstanding Questions
+## Open Questions
 
 - How are sub-collections discovered when the parent uses `record_file.type: map[string]any` (one file per record) versus the list/dictionary types where there is no per-record directory?
 

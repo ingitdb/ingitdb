@@ -1,5 +1,6 @@
 # Feature: Localization
 
+> [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/localization?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/localization?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/localization?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/localization?op=request-change) |
 **Status:** Draft
 
 ## Summary
@@ -69,7 +70,7 @@ A `languages` list of `required:` and `optional:` entries with valid ISO 639-1 o
 
 A configuration with required languages first followed by optional languages is accepted; one with optional languages preceding required ones is rejected. The declared order is preserved end-to-end.
 
-## Outstanding Questions
+## Open Questions
 
 - How does a localized field appear in a record file — as a map keyed by language code, or via a field-name suffix convention?
 - Should validation flag a record that is missing a translation in a required language as an error or as a warning?

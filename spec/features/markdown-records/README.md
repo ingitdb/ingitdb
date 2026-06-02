@@ -1,5 +1,6 @@
 # Feature: Markdown Records
 
+> [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/markdown-records?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/markdown-records?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/markdown-records?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/markdown-records?op=request-change) |
 **Status:** Draft
 
 ## Summary
@@ -292,7 +293,7 @@ A markdown record whose body exceeds 60 characters renders in a default
 view or README preview as the first 60 characters of the body followed by
 a truncation indicator, unless the view declares an explicit override.
 
-## Outstanding Questions
+## Open Questions
 
 - None at the spec level. Required-field handling has been promoted to
   `collection-schema` (asymmetric: write fails, read succeeds with a

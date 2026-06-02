@@ -1,5 +1,6 @@
 # Feature: Root Collections
 
+> [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/root-collections?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/root-collections?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/root-collections?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/root-collections?op=request-change) |
 **Status:** Draft
 
 ## Summary
@@ -85,7 +86,7 @@ A `root-collections.yaml` written as a flat map of valid collection IDs to singl
 
 A namespace import like `todo.*: demo-dbs/todo` expands to `todo.<id>` for every collection in the imported database. Paths are resolved relative to the importing file's directory. Pointing a namespace import at a missing or empty target produces an error.
 
-## Outstanding Questions
+## Open Questions
 
 - Are recursive namespace imports (an imported database that itself has namespace imports) supported, and if so is there a depth limit?
 - What happens when two namespace imports yield the same fully-qualified collection ID — error, or last-write-wins?

@@ -1,5 +1,6 @@
 # Feature: Git as Storage Engine
 
+> [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/git-as-storage-engine?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/git-as-storage-engine?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/git-as-storage-engine?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/git-as-storage-engine?op=request-change) |
 **Status:** Draft
 
 ## Summary
@@ -66,7 +67,7 @@ The history of any record is recoverable through standard Git tools (`git log -p
 
 A user creates a branch, modifies records on it, and merges it back to the main branch using standard Git commands. The resulting state is a valid inGitDB database with merged data.
 
-## Outstanding Questions
+## Open Questions
 
 - How are very large databases (millions of records) handled given Git's per-file overhead — is there guidance on shard boundaries or partial clones?
 - Are non-Git VCS backends (e.g. Mercurial, Jujutsu) explicitly out of scope, or are they a future consideration?

@@ -1,0 +1,16 @@
+# SpecScore Repo Config Schema: https://specscore.md/repo-config
+
+project:
+    title: inGitDB Specification
+    host: github.com
+    org: ingitdb
+    repo: ingitdb
+
+gates:
+  specify:
+    reviewers:
+      - name: ai-spec-reviewer
+        type: ai
+        prompt: .specscore/reviewers/specify-feature-reviewer.md
+      - name: human-approval
+        type: human
