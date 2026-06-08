@@ -1,7 +1,13 @@
+---
+format: https://specscore.md/feature-specification
+status: Draft
+---
+
 # Feature: Materialized Views
 
 > [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/materialized-views?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/materialized-views?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/materialized-views?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/materialized-views?op=request-change) |
 **Status:** Draft
+**Source Ideas:** —
 
 ## Summary
 

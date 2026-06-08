@@ -1,7 +1,13 @@
+---
+format: https://specscore.md/feature-specification
+status: Draft
+---
+
 # Feature: Record File Types
 
 > [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/record-file-types?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/record-file-types?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/record-file-types?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/record-file-types?op=request-change) |
 **Status:** Draft
+**Source Ideas:** —
 
 ## Summary
 

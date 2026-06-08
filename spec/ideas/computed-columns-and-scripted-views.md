@@ -1,6 +1,11 @@
+---
+format: https://specscore.md/idea-specification
+status: Specifying
+---
+
 # Idea: Computed Columns & Scripted Materialized Views (language-agnostic)
 
-**Status:** Implementing
+**Status:** Specifying
 **Date:** 2026-06-02
 **Owner:** alexander.trakhimenok@gmail.com
 **Promotes To:** computed-columns, formula-reference-wasm-engine

@@ -1,7 +1,13 @@
+---
+format: https://specscore.md/feature-specification
+status: Draft
+---
+
 # Feature: Localization
 
 > [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/localization?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/localization?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/localization?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/localization?op=request-change) |
 **Status:** Draft
+**Source Ideas:** —
 
 ## Summary
 

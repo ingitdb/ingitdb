@@ -1,7 +1,13 @@
+---
+format: https://specscore.md/feature-specification
+status: Draft
+---
+
 # Feature: Markdown Records
 
 > [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/markdown-records?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/markdown-records?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/markdown-records?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/markdown-records?op=request-change) |
 **Status:** Draft
+**Source Ideas:** —
 
 ## Summary
 

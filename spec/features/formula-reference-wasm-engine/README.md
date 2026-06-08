@@ -1,3 +1,8 @@
+---
+format: https://specscore.md/feature-specification
+status: Draft
+---
+
 # Feature: Formula Reference WASM Engine
 
 > [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/formula-reference-wasm-engine?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/formula-reference-wasm-engine?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/formula-reference-wasm-engine?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/formula-reference-wasm-engine?op=request-change) |

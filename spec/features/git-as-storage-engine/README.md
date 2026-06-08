@@ -1,7 +1,13 @@
+---
+format: https://specscore.md/feature-specification
+status: Draft
+---
+
 # Feature: Git as Storage Engine
 
 > [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/git-as-storage-engine?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/git-as-storage-engine?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/git-as-storage-engine?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/git-as-storage-engine?op=request-change) |
 **Status:** Draft
+**Source Ideas:** —
 
 ## Summary
 

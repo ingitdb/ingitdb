@@ -1,3 +1,7 @@
+---
+format: https://specscore.md/plans-index-specification
+---
+
 # Plans
 
 Implementation plans that decompose approved SpecScore Features into ordered,
