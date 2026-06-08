@@ -1,3 +1,7 @@
+---
+format: https://specscore.md/features-index-specification
+---
+
 # inGitDB Feature Index
 
 This index lists every top-level feature that defines the inGitDB database format and its core principles. Features describe **what** the format and engine are — directory layout, schema rules, file types, and the role of Git as the storage engine. CLI behavior and REST API endpoints are specified in the `ingitdb-cli` and `ingitdb-server` repositories respectively.

@@ -1,7 +1,13 @@
+---
+format: https://specscore.md/feature-specification
+status: Draft
+---
+
 # Feature: Storage Format
 
 > [SpecScore.**Studio**](https://specscore.studio): | [Explore](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/storage-format?op=explore) | [Edit](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/storage-format?op=edit) | [Ask question](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/storage-format?op=ask) | [Request change](https://specscore.studio/app/github.com/ingitdb/ingitdb/spec/features/storage-format?op=request-change) |
 **Status:** Draft
+**Source Ideas:** —
 
 ## Summary
 
