@@ -112,18 +112,13 @@ degrades to dirty trees swept up by the next committer.
 
 ## Key Assumptions to Validate
 
-1. Restoring tracked files from `HEAD` plus deleting newly created files is a
-   sufficient and safe rollback for every record-file layout (SingleRecord,
-   MapOfRecords) — including partially written multi-record files.
-2. Committing by default does not unacceptably slow write-heavy workloads
-   (one `git add` + `git commit` per transaction); measure and, if needed,
-   allow `saved`-level acks with periodic auto-commit.
-3. Async publication with single-flight coalescing loses no acknowledged
-   data on process crash (the commits are local; only the push is pending).
-4. Non-fast-forward push rejections can be handled with fetch+rebase for
-   append-mostly record workloads without corrupting definitions.
-5. The ack-level API can be expressed through `dal.TransactionOptions`
-   without breaking existing dalgo consumers.
+| Tier | Assumption | How to validate |
+|------|------------|-----------------|
+| Must-be-true | Restoring tracked files from `HEAD` plus deleting newly created files is a sufficient and safe rollback for every record-file layout (SingleRecord, MapOfRecords), including partially written multi-record files | Write failing-transaction conformance vectors per layout; assert the tree is byte-identical to the pre-transaction state after rollback |
+| Must-be-true | The ack-level API can be expressed through `dal.TransactionOptions` without breaking existing dalgo consumers | Prototype the option in dalgo2ingitdb behind the existing `TxWithMessage` seam; run the dalgo end2end suite and sneat/OpenVaultDB consumers unchanged |
+| Should-be-true | Committing by default does not unacceptably slow write-heavy workloads (one `git add` + `git commit` per transaction) | Benchmark bulk-import and chatty-CRUD workloads with commit-per-tx vs saved-level acks + periodic auto-commit |
+| Should-be-true | Async publication with single-flight coalescing loses no acknowledged data on process crash (commits are local; only the push is pending) | Kill-the-process tests around the pusher; verify `git log` vs remote after restart |
+| Might-be-true | Non-fast-forward push rejections can be handled with fetch+rebase for append-mostly record workloads without corrupting definitions | Simulate concurrent clones pushing to one remote; measure rebase success/conflict rates on record-file layouts |
 
 ## SpecScore Integration
 
