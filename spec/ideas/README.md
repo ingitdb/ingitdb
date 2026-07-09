@@ -11,6 +11,7 @@ Pre-spec one-pagers. Each Idea is a lint-clean problem-direction-MVP one-pager t
 | Idea | Status | Date | Owner | Promotes To |
 |------|--------|------|-------|-------------|
 | [computed-columns-and-scripted-views](computed-columns-and-scripted-views.md) | Specifying | 2026-06-02 | alexander.trakhimenok@gmail.com | computed-columns, formula-reference-wasm-engine |
+| [transactions-save-commit-push-model](transactions-save-commit-push-model.md) | Draft | 2026-07-09 | alexander.trakhimenok@gmail.com | — |
 
 ## Open Questions
 
