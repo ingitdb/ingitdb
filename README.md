@@ -8,11 +8,9 @@ This repo is the central hub for **project planning**, **issue tracking**, **arc
 
 ---
 
-## Flagship ecosystem product
+## DataTug project-content integration
 
-DataTug is exploring inGitDB for project definitions and version-controlled content. That integration work is ongoing.
-
-DataTug is the flagship ecosystem product. [Explore DataTug](https://datatug.app), and read [how we built its development tools](https://datatug.app/en/under-the-hood/tools-we-built/) for the open-source tools and standards behind it.
+[DataTug](https://datatug.app) is exploring inGitDB for project definitions and version-controlled content; integration work is ongoing. Read [how DataTug’s development tools were built](https://datatug.app/en/under-the-hood/tools-we-built/).
 
 ## 🔗 Quick Navigation
 
