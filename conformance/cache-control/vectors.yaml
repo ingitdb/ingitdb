@@ -1,0 +1,60 @@
+# Cache-Control conformance vectors for the `cache_control` setting.
+#
+# Normative for every inGitDB implementation (ingitdb-go, ingitdb-ts, and any
+# other reader). See README.md. Vendored byte-for-byte into each implementation.
+version: 1
+
+# Directive parsing. For every input:
+#   valid      - does the validator (authoring time) accept it?
+#   maxAge     - the reader's view: max-age seconds, or null when absent/dropped
+#   noStore / noCache / immutable - the reader's view of those flags
+# Readers never fail: a malformed directive is dropped, the first of a repeated
+# directive wins, a flag with an argument still counts, a delta-seconds value
+# above 2147483648 is clamped to 2147483648.
+parse:
+  - {input: "Public, MAX-AGE=60 , immutable", valid: true, maxAge: 60, noStore: false, noCache: false, immutable: true}
+  - {input: "max-age=0", valid: true, maxAge: 0, noStore: false, noCache: false, immutable: false}
+  - {input: 'max-age="60"', valid: true, maxAge: 60, noStore: false, noCache: false, immutable: false}
+  - {input: "max-age=5, max-age=6", valid: false, maxAge: 5, noStore: false, noCache: false, immutable: false}
+  - {input: "max-age=-1", valid: false, maxAge: null, noStore: false, noCache: false, immutable: false}
+  - {input: "max-age=1.5", valid: false, maxAge: null, noStore: false, noCache: false, immutable: false}
+  - {input: "max-age=", valid: false, maxAge: null, noStore: false, noCache: false, immutable: false}
+  - {input: "max-age", valid: false, maxAge: null, noStore: false, noCache: false, immutable: false}
+  - {input: "immutable=1", valid: false, maxAge: null, noStore: false, noCache: false, immutable: true}
+  - {input: "no-store=yes", valid: false, maxAge: null, noStore: true, noCache: false, immutable: false}
+  - {input: 'no-cache="Set-Cookie"', valid: true, maxAge: null, noStore: false, noCache: true, immutable: false}
+  - {input: 'x="a,b\"c"', valid: true, maxAge: null, noStore: false, noCache: false, immutable: false}
+  - {input: 'x="unterminated', valid: false, maxAge: null, noStore: false, noCache: false, immutable: false}
+  - {input: "bad name", valid: false, maxAge: null, noStore: false, noCache: false, immutable: false}
+  - {input: "public,,no-store", valid: false, maxAge: null, noStore: true, noCache: false, immutable: false}
+  - {input: "max-age=99999999999999999999", valid: false, maxAge: 2147483648, noStore: false, noCache: false, immutable: false}
+  - {input: "max-age=2147483648", valid: true, maxAge: 2147483648, noStore: false, noCache: false, immutable: false}
+  - {input: "max-age=2147483649", valid: false, maxAge: 2147483648, noStore: false, noCache: false, immutable: false}
+  - {input: "s-maxage=60", valid: true, maxAge: null, noStore: false, noCache: false, immutable: false}
+  - {input: "stale-while-revalidate=30", valid: true, maxAge: null, noStore: false, noCache: false, immutable: false}
+  - {input: "no-cache, max-age=10", valid: true, maxAge: 10, noStore: false, noCache: true, immutable: false}
+  - {input: "future-directive=7, private", valid: true, maxAge: null, noStore: false, noCache: false, immutable: false}
+  - {input: "   ", valid: false, maxAge: null, noStore: false, noCache: false, immutable: false}
+
+# Freshness decision. declared is the effective cache_control (null = none),
+# ref is branch | pinned | unknown (unknown is treated as branch), origin is the
+# origin's own Cache-Control (null = none), default is the freshness assumed when
+# the origin says nothing. expect is the reuse time in seconds; 0 = do not store.
+freshness:
+  - {name: no-declared-value, declared: null, ref: branch, origin: "max-age=300", default: 300, expect: 300}
+  - {name: branch-only-tightens, declared: "public, max-age=31536000, immutable", ref: branch, origin: "max-age=300", default: 300, expect: 300}
+  - {name: pinned-relaxes, declared: "public, max-age=31536000, immutable", ref: pinned, origin: "max-age=300", default: 300, expect: 31536000}
+  - {name: pinned-immutable-alone, declared: "public, immutable", ref: pinned, origin: "max-age=300", default: 300, expect: 31536000}
+  - {name: branch-immutable-ignored, declared: "public, immutable", ref: branch, origin: "max-age=300", default: 300, expect: 300}
+  - {name: no-store-beats-pinned, declared: "no-store", ref: pinned, origin: "max-age=300", default: 300, expect: 0}
+  - {name: tighten-below-origin, declared: "max-age=60", ref: branch, origin: "max-age=300", default: 300, expect: 60}
+  - {name: no-origin-header-uses-default, declared: "max-age=600", ref: branch, origin: null, default: 300, expect: 300}
+  - {name: unknown-ref-is-unpinned-tightens, declared: "max-age=60", ref: unknown, origin: null, default: 300, expect: 60}
+  - {name: unknown-ref-is-unpinned-no-relax, declared: "max-age=31536000", ref: unknown, origin: "max-age=300", default: 300, expect: 300}
+  - {name: origin-no-store-wins, declared: null, ref: branch, origin: "no-store", default: 300, expect: 0}
+  - {name: origin-no-cache-beats-declared-pinned, declared: "max-age=999", ref: pinned, origin: "no-cache", default: 300, expect: 0}
+  - {name: declared-no-cache-wins, declared: "max-age=999, no-cache", ref: pinned, origin: null, default: 300, expect: 0}
+  - {name: malformed-declared-ignored, declared: "max-age=soon", ref: pinned, origin: null, default: 300, expect: 300}
+  - {name: origin-max-age-used, declared: null, ref: branch, origin: "private, max-age=60", default: 300, expect: 60}
+  - {name: must-revalidate-needs-no-handling, declared: "must-revalidate, max-age=100", ref: pinned, origin: "max-age=300", default: 300, expect: 100}
+  - {name: max-age-zero-is-no-reuse, declared: "max-age=0", ref: pinned, origin: "max-age=300", default: 300, expect: 0}
